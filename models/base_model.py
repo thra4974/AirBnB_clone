@@ -1,28 +1,34 @@
 #!/usr/bin/python3
 """Contains the module BaseModel"""
 import uuid
-from datetime import datetime
+from datetime import datetime, time
 import models
 
 
 class BaseModel:
     """ defines class BaseModel """
-    def __init__(self, id=uuid, created_at=0, updated_at=0):
+    def __init__(self, *args, **kwargs):
         """
         initializes Base model
 
         Args:
-        id: unique id of instance
-        created_at: datetime of creation
-        updated_at: datetime of update
+        *args: unused
+        **kwargs: dictionary containing all arguments by key/value
 
         Return:
         None
         """
 
-        self.id = str(id.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if len(kwargs) is not 0:
+            self.__dict__ = kwargs
+            self.created_at = datetime.strptime(self.created_at,
+                                                       "%Y-%m-%dT%H:%M:%S.%f")
+            self.updated_at = datetime.strptime(self.updated_at,
+                                                       "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """ string representation of BaseModel """
