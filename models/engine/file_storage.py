@@ -10,17 +10,9 @@ import uuid
 class FileStorage:
     """ defines Filestorage class """
 
-    def __init__(self, __file_path, __objects):
-        """ initializes FileStorage class
-        Args:
-            __file_path: string - path to JSON file
-            __objects: dictionary - empty but stores all objects by 
+    __file_path = ""
+    __objects = {}
 
-        """
-        self.__file_path = __file_path
-        self.__objects = {}
-
-    @property
     def all(self):
         """ returns __obj """
         return self.__objects
@@ -47,3 +39,8 @@ class FileStorage:
         try:
             with open(JSON_FILE, "r", encoding="utf-8") as f:
                 load_obj = json.load(f)
+                for key, values in load_obj.items():
+                    re_obj = eval('{}(**v)'.format(v['__class__']))
+                    self.__objects[k] = re_obj
+        except IOError:
+            return
