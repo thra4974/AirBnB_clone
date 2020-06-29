@@ -25,3 +25,28 @@ class TestBaseModelPep8(unittest.TestCase):
         res = style.check_files([file1, file2])
         self.assertEqual(res.total_errors,
                          0, "Pep style errors and warnings my dog.")
+
+class TestBaseModelClass(unittest.TestCase):
+    """ test BaseModel Class methods """
+    @classmethod
+    def setUpClass(cls):
+        """ create instance for test """
+        cls.basemodel = BaseModel()
+
+    def test_id(self):
+        """ test id of instance """
+        self.assertEqual(str, type(self.basemodel.id))
+
+    def test_created_at(self):
+        """ test created_at attribute """
+        self.assertEqual(datetime, type(self.basemodel.created_at))
+
+    def test_updated_at(self):
+        """ test updated at attribute """
+        self.assertEqual(datetime, type(self.basemodel.updated_at))
+
+    def test_to_dict(self):
+        """ test to_dict method """
+        dictionary = self.basemodel.to_dict()
+        self.assertEqual(type(dictionary), dict)
+        self.assertTrue('to_dict' in dir(self.basemodel))

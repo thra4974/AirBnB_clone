@@ -10,7 +10,7 @@ import uuid
 class FileStorage:
     """ defines Filestorage class """
 
-    __file_path = ""
+    __file_path = "file"
     __objects = {}
 
     def all(self):
@@ -40,7 +40,7 @@ class FileStorage:
             with open(JSON_FILE, "r", encoding="utf-8") as f:
                 load_obj = json.load(f)
                 for key, values in load_obj.items():
-                    re_obj = eval('{}(**v)'.format(v['__class__']))
-                    self.__objects[k] = re_obj
+                    re_obj = eval('{}(**values)'.format(values['__class__']))
+                    self.__objects[key] = re_obj
         except IOError:
             return
