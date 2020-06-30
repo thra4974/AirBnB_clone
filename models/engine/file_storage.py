@@ -7,6 +7,11 @@ import models
 import uuid
 
 
+classes = {"BaseModel": BaseModel, "User": User, "State": State,
+           "City": City, "Amenity": Amenity, "Place": Place,
+           "Review": Review}
+
+
 class FileStorage:
     """ defines Filestorage class """
 
@@ -25,7 +30,7 @@ class FileStorage:
         """ serializes __objects to JSON file """
         dictionary = {}
         json_ext = ".json"
-        JSON_FILE = self.__file_path  + json_ext
+        JSON_FILE = self.__file_path + json_ext
 
         with open(JSON_FILE, "w+", encoding="utf-8") as f:
             for keys, values in self.__objects.items():
