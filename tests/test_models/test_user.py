@@ -10,7 +10,7 @@ class TestBaseModelDocs(unittest.TestCase):
     """ test for docstrings """
     def test_documentation(self):
         """ class docstring test """
-        self.assertTrue(len(State.__doc__) > 0)
+        self.assertTrue(len(User.__doc__) > 0)
 
 class TestBaseModelPep8(unittest.TestCase):
     """ test for pep8 formatting """
