@@ -12,7 +12,9 @@ class HBNBCommand(cmd.Cmd):
     """ defines class HBNBCommand """
     intro = 'Welcome to HBNB command. Type help or ? for options. \n'
     prompt = '(hbnb) '
-    existing_classes = ["BaseModel"]
+    existing_classes = {"BaseModel": BaseModel, "User": User, "State": State,
+                        "City": City, "Amenity": Amenity, "Place": Place,
+                        "Review": Review}
 
     """ Basic Commands """
     def do_quit(self, arg):
