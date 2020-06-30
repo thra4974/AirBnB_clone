@@ -13,14 +13,15 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     existing_classes = ["BaseModel"]
 
+    """ Basic Commands """
     def do_quit(self, arg):
         """ implements quit command """
-        print("hasta la fuego")
+        print("hasta luego\n")
         return True
 
     def help_quit(self):
         """ help command for quit """
-        print("Quit command to exit HBNB")
+        print("Quit command to exit HBNB\n")
 
     def do_EOF(self, arg):
         """ implements EOF """
@@ -28,8 +29,13 @@ class HBNBCommand(cmd.Cmd):
 
     def help_EOF(self):
         """ help command for EOF option """
-        print("EOF option to exit HBNB")
+        print("EOF option to exit HBNB\n")
 
+    def emptyline(self):
+        """ do absolutley nothing """
+        pass
+
+    """ Modeling Options """
     def do_create(self, arg):
         """ creates instance of BaseModel """
         l = arg.split()
