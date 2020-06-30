@@ -16,7 +16,6 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """ defines class HBNBCommand """
-    intro = 'Welcome to HBNB command. Type help or ? for options. \n'
     prompt = '(hbnb) '
     existing_classes = ["BaseModel", "User", "State",
                         "City", "Amenity", "Place",
@@ -25,7 +24,6 @@ class HBNBCommand(cmd.Cmd):
     """ Basic Commands """
     def do_quit(self, arg):
         """ implements quit command """
-        print("hasta luego\n")
         return True
 
     def help_quit(self):
@@ -67,12 +65,15 @@ class HBNBCommand(cmd.Cmd):
         l = arg.split()
         if len(l) < 1:
             print("** class name missing **")
+            return False
 
         elif l[0] not in self.existing_classes:
             print("** class doesn't exist **")
+            return False
 
         elif len(l) < 2:
             print("** instance id missing **")
+            return False
 
         objs = storage.all()
         for n in objs.keys():
@@ -92,12 +93,15 @@ class HBNBCommand(cmd.Cmd):
         l = arg.split()
         if len(l) < 1:
             print("** class name missing **")
+            return False
 
         elif l[0] not in self.existing_classes:
             print("** class doesn't exist **")
+            return False
 
         elif len(l) < 2:
             print("** instance id missing **")
+            return False
 
         del_objs = storage.all()
         for n in list(del_objs):
@@ -117,6 +121,7 @@ class HBNBCommand(cmd.Cmd):
         objs = storage.all()
         if l[0] not in self.existing_classes:
             print("** class doesn't exist **")
+            return False
         else:
             for values in objs:
                 print(str(objs[values]))
@@ -127,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
               "of all instances\n"
               "Usages: all; all <class name>")
 
-    def update(self, args):
+    def do_update(self, args):
         """
         Usage: update <class name> <id> <attribute name> "<attribute value>"
 
@@ -146,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
             if len(line) == 1:
                 print("** instance id missing **")
             else:
-                _obj = models.FileStorage.all()
+                _obj = storage.all()
                 Id = str(line[0]) + "." + str(line[1])
                 if Id not in _obj:
                     print("** no instance found **")
@@ -158,7 +163,7 @@ class HBNBCommand(cmd.Cmd):
                             print("** value missing **")
                         else:
                             setattr(_obj[Id], line[2], line[3])
-                            models.FileStorage.save()
+                            storage.save()
 
 
 if __name__ == '__main__':
