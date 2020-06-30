@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
 import json
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
@@ -117,6 +118,39 @@ class HBNBCommand(cmd.Cmd):
         print("all commmand prints all string representations"
               "of all instances\n"
               "Usages: all; all <class name>")
+
+    def update(self, args):
+        """
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+
+        Updates an instance based on the class name and id by
+        adding or updating attribute
+        """
+        line = shlex.split(args)
+        if len(line) == 0:
+            print("** class name missing **")
+        else:
+            try:
+                eval(str(line[0]))
+            except:
+                print("** class doesn't exist **")
+                return
+            if len(line) == 1:
+                print("** instance id missing **")
+            else:
+                _obj = models.FileStorage.all()
+                Id = str(line[0]) + "." + str(line[1])
+                if Id not in _obj:
+                    print("** no instance found **")
+                else:
+                    if len(line) == 2:
+                        print("** attribute name missing **")
+                    else:
+                        if len(line) == 3:
+                            print("** value missing **")
+                        else:
+                            setattr(_obj[Id], line[2], line[3])
+                            models.FileStorage.save()
 
 
 if __name__ == '__main__':
