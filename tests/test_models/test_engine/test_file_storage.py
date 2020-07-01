@@ -18,6 +18,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(res.total_errors, 0,
                          "Pep8 Errors and Warnings found")
 
+
 class TestFileStorage(unittest.TestCase):
     """ Tests for FileStorage Module """
     @classmethod
@@ -27,4 +28,4 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ tests filestorage methods """
-        return
+        pass
