@@ -5,6 +5,7 @@ from datetime import datetime
 from models.base_model import BaseModel
 from models.state import State
 import json
+import os
 
 
 class TestBaseModelDocs(unittest.TestCase):

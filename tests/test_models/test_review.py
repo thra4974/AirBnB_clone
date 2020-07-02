@@ -5,6 +5,7 @@ from datetime import datetime
 from models.base_model import BaseModel
 from models.review import Review
 import json
+import os
 
 
 class TestBaseModelDocs(unittest.TestCase):

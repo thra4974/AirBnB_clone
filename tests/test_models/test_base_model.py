@@ -3,6 +3,8 @@ import unittest
 import pep8
 from datetime import datetime
 from models.base_model import BaseModel
+import os
+import json
 
 
 class TestBaseModelDocs(unittest.TestCase):

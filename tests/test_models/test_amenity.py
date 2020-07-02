@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import unittest
+import os
 import pep8
 from datetime import datetime
 from models.base_model import BaseModel
