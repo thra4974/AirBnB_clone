@@ -6,11 +6,13 @@ from models.base_model import BaseModel
 from models.state import State
 import json
 
+
 class TestBaseModelDocs(unittest.TestCase):
     """ test for docstrings """
     def test_documentation(self):
         """ class docstring test """
         self.assertTrue(len(State.__doc__) > 0)
+
 
 class TestBaseModelPep8(unittest.TestCase):
     """ test for pep8 formatting """
@@ -22,6 +24,7 @@ class TestBaseModelPep8(unittest.TestCase):
         res = style.check_files([file1, file2])
         self.assertEqual(res.total_errors,
                          0, "Pep style errors and warnings my dog.")
+
 
 class TestBaseModelClass(unittest.TestCase):
     """ test BaseModel Class methods """

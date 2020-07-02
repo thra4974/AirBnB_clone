@@ -4,6 +4,7 @@ import pep8
 from datetime import datetime
 from models.base_model import BaseModel
 
+
 class TestBaseModelDocs(unittest.TestCase):
     """ test for docstrings """
     def test_documentation(self):
@@ -15,6 +16,7 @@ class TestBaseModelDocs(unittest.TestCase):
         for func in dir(BaseModel):
             self.assertTrue(len(func.__doc__) > 0)
 
+
 class TestBaseModelPep8(unittest.TestCase):
     """ test for pep8 formatting """
     def pep8_test(self):
@@ -25,6 +27,7 @@ class TestBaseModelPep8(unittest.TestCase):
         res = style.check_files([file1, file2])
         self.assertEqual(res.total_errors,
                          0, "Pep style errors and warnings my dog.")
+
 
 class TestBaseModelClass(unittest.TestCase):
     """ test BaseModel Class methods """
