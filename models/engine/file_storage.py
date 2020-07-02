@@ -54,4 +54,4 @@ class FileStorage:
                     re_obj = eval('{}(**values)'.format(values['__class__']))
                     self.__objects[key] = re_obj
         except IOError:
-            return
+            pass
