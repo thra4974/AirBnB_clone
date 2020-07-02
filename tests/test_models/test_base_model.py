@@ -50,3 +50,8 @@ class TestBaseModelClass(unittest.TestCase):
         dictionary = self.basemodel.to_dict()
         self.assertEqual(type(dictionary), dict)
         self.assertTrue('to_dict' in dir(self.basemodel))
+
+    @classmethod
+    def tearDownClass(cls):
+        """ delete instance of test cases """
+        pass
