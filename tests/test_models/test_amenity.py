@@ -47,3 +47,8 @@ class TestBaseModelClass(unittest.TestCase):
         dictionary = self.amenity.to_dict()
         self.assertEqual(type(dictionary), dict)
         self.assertTrue('to_dict' in dir(self.amenity))
+
+    @classmethod
+    def tearDownClass(cls):
+        """ delete instance of test cases """
+        pass
