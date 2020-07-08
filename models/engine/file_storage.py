@@ -21,7 +21,9 @@ classes = {"BaseModel": BaseModel, "User": User, "State": State,
 class FileStorage:
     """ defines Filestorage class """
 
+    ''' path to JSON file '''
     __file_path = "file"
+    ''' stores all objects by their class and id. Format (<class name>.id) '''
     __objects = {}
 
     def all(self):
@@ -29,7 +31,7 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """ sets in __objects the obj w/ key <obj class name>.id """
+        """ sets in __objects the obj w/key. Format: <obj class name>.id """
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
@@ -53,5 +55,7 @@ class FileStorage:
                 for key, values in load_obj.items():
                     re_obj = eval('{}(**values)'.format(values['__class__']))
                     self.__objects[key] = re_obj
+        ''' if open failes to execute (ex: file doesn't exist) '''
         except IOError:
+            ''' Raisse no exception '''
             pass

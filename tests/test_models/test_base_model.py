@@ -39,21 +39,22 @@ class TestBaseModelClass(unittest.TestCase):
         cls.basemodel = BaseModel()
 
     def test_id(self):
-        """ test id of instance """
+        """ test type of id of an instance """
         self.assertEqual(str, type(self.basemodel.id))
 
     def test_created_at(self):
-        """ test created_at attribute """
+        """ test type of created_at attribute """
         self.assertEqual(datetime, type(self.basemodel.created_at))
 
     def test_updated_at(self):
-        """ test updated at attribute """
+        """ test type of updated at attribute """
         self.assertEqual(datetime, type(self.basemodel.updated_at))
 
     def test_to_dict(self):
         """ test to_dict method """
-        dictionary = self.basemodel.to_dict()
+        dictionary = self.basemodel.to_dict() ''' create tmp dict and check type'''
         self.assertEqual(type(dictionary), dict)
+        ''' check if method is in dir '''
         self.assertTrue('to_dict' in dir(self.basemodel))
 
     @classmethod

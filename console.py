@@ -52,7 +52,9 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in self.existing_classes:
             print("** class doesn't exist **")
         else:
+            ''' eval lets python execuate an argumant as a command '''
             new_base_model = eval("{}()".format(arg))
+            ''' save our base_model instance '''
             new_base_model.save()
             print(new_base_model.id)
 
@@ -77,6 +79,7 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         objs = storage.all()
+        ''' store all object instances '''
         for n in objs.keys():
             if n == "{}.{}".format(l[0], l[1]):
                 print(objs[n])
