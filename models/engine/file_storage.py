@@ -55,7 +55,5 @@ class FileStorage:
                 for key, values in load_obj.items():
                     re_obj = eval('{}(**values)'.format(values['__class__']))
                     self.__objects[key] = re_obj
-        ''' if open failes to execute (ex: file doesn't exist) '''
         except IOError:
-            ''' Raisse no exception '''
             pass
